@@ -1,0 +1,28 @@
+<%= form_with(model: news, local: true) do |form| %>
+  <% if news.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">¡Hay problemas con tu entrada!</h4>
+      <p><%= pluralize(news.errors.count, "error") %> prohibited this news from being saved:</p>
+      <ul>
+        <% news.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :Titulo, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Título de la noticia" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :contenido, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control", rows: 5, placeholder: "Escribe el contenido de la noticia aquí..." %>
+  </div>
+
+  <div>
+    <%= form.submit "Grabar", class: "btn btn-primary" %>
+    <%= link_to 'Cancelar', news_index_path, class: 'btn btn-secondary ms-2' %>
+  </div>
+<% end %>

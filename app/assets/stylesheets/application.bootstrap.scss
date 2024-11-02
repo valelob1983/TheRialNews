@@ -1,2 +1,30 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+.alert {
+    font-weight: bold;
+  }
+  
+  .btn {
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+
+  .btn-warning {
+    background-color: #ffc107;
+  }
+
+  .btn-warning:hover {
+    background-color: #e0a800;
+  }
+  

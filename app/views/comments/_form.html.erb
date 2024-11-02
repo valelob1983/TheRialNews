@@ -1,0 +1,27 @@
+<%= form_with(model: comment, local: true) do |form| %>
+  <% if comment.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h4>
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control", rows: 4 %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :news_id, "Noticia", class: "form-label" %>
+    <%= form.collection_select :news_id, News.all, :id, :title, { prompt: "Seleccione una noticia" }, { class: "form-select" } %>
+  </div>
+
+  <div>
+    <%= form.submit "Grabar", class: "btn btn-primary" %>
+  </div>
+<% end %>
+

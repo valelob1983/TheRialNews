@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  resources :comments
+  resources :news
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,4 +10,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  get '/comments', to: 'comments#index', as: 'user_root'
 end
