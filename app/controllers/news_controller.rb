@@ -1,7 +1,15 @@
 class NewsController < ApplicationController
   before_action :set_news, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action only: [:new, :create] do
+    authorize_request(["author", "admin"])
+   end
 
+  def authorize_request(kind = nil)
+    unless kind.include?(current_user.role)
+      redirect_to news_index_path, notice: "You are not authorized to perform this action"
+    end
+   end
   # GET /news or /news.json
   def index
     @news = News.all
